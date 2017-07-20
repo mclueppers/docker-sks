@@ -13,14 +13,11 @@ apk -U --no-progress add db s6
 apk --no-progress add camlp4 db-dev gcc libc-dev make zlib-dev
 
 # extract software
-# https://github.com/moby/moby/issues/33849
-# Now commented by extract issue, uncomment in next docker version
-#cd /tmp/tgz
-#tar xzf sks-*.tgz
+cd /tmp/tgz
+tar xzf sks-*.tgz
 
 # build sks
-#cd /tmp/tgz/sks-*/ # issue 33849, uncomment in next docker version 
-cd /tmp/tgz/*/sks-*/
+cd /tmp/tgz/sks-*/
 cp Makefile.local.unused Makefile.local
 sed -i 's/PREFIX=\/usr\/local/PREFIX=\/usr/' Makefile.local
 sed -i 's/ldb\-4.6/ldb\-5/' Makefile.local

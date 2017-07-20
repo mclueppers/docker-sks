@@ -38,4 +38,4 @@ mv /tmp/s6 /etc
 
 # remove build deps
 apk --no-progress del camlp4 db-dev gcc libc-dev make zlib-dev
-rm -rf /tmp/*
+rm -rf /root/.ash_history /tmp/* /var/cache/apk/*

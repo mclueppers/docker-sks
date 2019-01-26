@@ -1,8 +1,6 @@
-FROM alpine:3.6
+FROM alpine:3.7
 
 COPY docker /tmp/
-
-ADD https://bitbucket.org/skskeyserver/sks-keyserver/downloads/sks-1.1.6.tgz /tmp/tgz/sks-1.1.6.tgz
 
 RUN /bin/sh /tmp/build.sh
 
@@ -17,5 +15,7 @@ ENV SKS_HOSTNAME="localhost" \
 WORKDIR /var/lib/sks/
 
 VOLUME ["/var/lib/sks/"]
+
+EXPOSE 11371 11370
 
 ENTRYPOINT ["/bin/run.sh"]

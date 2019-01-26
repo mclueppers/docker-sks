@@ -19,7 +19,7 @@ pagesize: 16
 ptree_pagesize: 16
 nodename: ${SKS_NODENAME}
 disable_mailsync:
-debuglevel: 5
+debuglevel: 3
 membership_reload_interval: 1
 stat_hour: 17
 server_contact: ${SKS_SERVER_CONTACT}
@@ -51,5 +51,5 @@ fi
 if [ $# -gt 0 ];then
   exec "$@"
 else
-  exec /bin/s6-svscan /etc/s6/
+  exec /init
 fi

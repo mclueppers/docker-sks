@@ -1,6 +1,8 @@
 # SKS OpenPGP keyserver docker on Alpine Linux [![Build Status](https://travis-ci.org/ogarcia/docker-sks.svg?branch=master)](https://travis-ci.org/ogarcia/docker-sks)
 
-(c) 2017 Óscar García Amor
+(c) 2019 Martin Dobrev
+
+Based on the original work of (Óscar García Amor)[https://github.com/ogarcia/docker-sks] and (Jeremy T. Bouse)[https://github.com/UGNS/sks-docker]
 
 Redistribution, modifications and pull requests are welcomed under the terms
 of GPLv3 license.
@@ -31,10 +33,10 @@ data in `/docker/sks`, run.
   --name sks \
   -e "SKS_SERVER_CONTACT=YOUR_OPENPGP_KEYID" \
   -v /docker/sks:/var/lib/sks \
-  connectical/sks
+  mclueppers/sks
 ```
 
-Take note that if you dont have a valid SKS database, the server will not
+Take note that if you don't have a valid SKS database, the server will not
 run. Please, take a look to [dump documentation][4] and [SKS Readme][5] for
 more info.
 
@@ -49,7 +51,8 @@ database, simply call docker with desired command.
 ```
 /usr/bin/docker run -t -i --rm \
   -v /docker/sks:/var/lib/sks \
-  connectical/sks sks_build.sh
+  -v /docker/keydump:/var/lib/sks/dump:ro \
+  mclueppers/sks sks_build.sh
 ```
 
 Take note that if you pass paths to command, these paths will refer to
@@ -89,7 +92,7 @@ After=docker.service
 [Service]
 ExecStartPre=-/usr/bin/docker kill sks
 ExecStartPre=-/usr/bin/docker rm sks
-ExecStartPre=/usr/bin/docker pull connectical/sks:VERSION_TAG
+ExecStartPre=/usr/bin/docker pull mclueppers/sks:VERSION_TAG
 ExecStart=/usr/bin/docker run \
   --network host \
   --name sks \
@@ -101,7 +104,7 @@ ExecStart=/usr/bin/docker run \
   -e "SKS_HKP_PORT=11371" \
   -e "SKS_SERVER_CONTACT=YOUR_OPENPGP_KEYID" \
   -e "SKS_NODENAME=keys" \
-  connectical/sks:VERSION_TAG
+  mclueppers/sks:VERSION_TAG
 ExecStop=/usr/bin/docker stop -t 2 sks
 Restart=always
 

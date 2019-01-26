@@ -1,0 +1,16 @@
+--- sks-1.1.6.orig/keydb.ml
++++ sks-1.1.6/keydb.ml
+@@ -1166,6 +1166,12 @@
+     try
+       if has_hash hash then [] else
+-        let keyid = Fingerprint.keyid_from_key ~short:true key in
++        let keyid = Fingerprint.keyid_from_key ~short:true key in
++        let keyid_long = Fingerprint.keyid_to_string ~short:false (Fingerprint.keyid_from_key ~short:false key) in
++        plerror 4 "considering keyid %s" keyid_long;
++        if List.mem keyid_long [
++          "E41ED3A107A7DBC7"; (* 2018-07-16 *)
++          "86CE877469D2EAD9"; (* 2019-01-22 *)
++        ] then [] else
+         let potential_merges = List.filter ~f:(fun x -> x <> key)
+                                  (get_by_short_keyid keyid)
+         in

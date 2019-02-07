@@ -1,6 +1,7 @@
 #! /bin/sh
 #
 # run.sh
+# Copyright (C) 2019 Martin Dobrev <martin@dobrev.eu>
 # Copyright (C) 2017 Óscar García Amor <ogarcia@connectical.com>
 #
 # Distributed under terms of the MIT license.
@@ -23,6 +24,9 @@ debuglevel: 3
 membership_reload_interval: 1
 stat_hour: 17
 server_contact: ${SKS_SERVER_CONTACT}
+command_timeout: 600
+wserver_timeout: 30
+max_recover: 150
 EOF
 else
 sed -i "\
@@ -33,6 +37,9 @@ sed -i "\
   s/hkp_port:.*/hkp_port: ${SKS_HKP_PORT}/g; \
   s/nodename:.*/nodename: ${SKS_NODENAME}/g; \
   s/server_contact:.*/server_contact: ${SKS_SERVER_CONTACT}/g; \
+  s/command_timeout:.*/command_timeout: ${SKS_COMMAND_TIMEOUT}/g; \
+  s/wserver_timeout:.*/wserver_timeout: ${SKS_WSERVER_TIMEOUT}/g; \
+  s/max_recover:.*/max_recover: ${SKS_MAX_RECOVER}/g; \
   " sksconf
 fi
 

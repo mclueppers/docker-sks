@@ -39,7 +39,7 @@ sed -i 's/#!\/bin\/bash/#!\/bin\/sh/' /usr/bin/sks_build.sh
 sed -i 's/\/usr\/sbin\/sks/\/usr\/bin\/sks/' /usr/bin/sks_build.sh
 
 # add startup scrips
-chmod +x /tmp/run.sh /tmp/s6/.s6-svscan/finish /tmp/s6/*/run
+chmod +x /tmp/run.sh /tmp/s6/services/.s6-svscan/finish /tmp/s6/services/sks-*/run
 mv /tmp/run.sh /bin
 mv /tmp/bin/* /bin
 cp -rp /tmp/s6 /etc/

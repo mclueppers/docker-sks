@@ -15,11 +15,8 @@ node {
 
     parallel "build-${projectName}": {
         dockerBuild(dockerImageName: projectName)
+    }, "OWASP Dependency check": {
+      owaspDependencyCheck()
     }
 
-    parallel "push-${projectName}": {
-        dockerPush(dockerImage: projectName,
-                   dockerRepoUrl: dockerRepoUrl,
-                   dockerRepoCredsId: 'DOCKER_CREDENTIALS')
-    }
 }

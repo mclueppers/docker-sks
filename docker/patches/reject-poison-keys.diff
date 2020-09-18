@@ -10,6 +10,7 @@
 +        if List.mem keyid_long [
 +          "E41ED3A107A7DBC7"; (* 2018-07-16 *)
 +          "86CE877469D2EAD9"; (* 2019-01-22 *)
++          "73E287A82CF1B349"; (* 2020-09-18 *)
 +        ] then [] else
          let potential_merges = List.filter ~f:(fun x -> x <> key)
                                   (get_by_short_keyid keyid)

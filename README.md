@@ -2,7 +2,7 @@
 
 (c) 2019 Martin Dobrev
 
-Based on the original work of (Óscar García Amor)[https://github.com/ogarcia/docker-sks] and (Jeremy T. Bouse)[https://github.com/UGNS/sks-docker]
+Based on the original work of [Óscar García Amor](https://github.com/ogarcia/docker-sks) and [Jeremy T. Bouse](https://github.com/UGNS/sks-docker)
 
 Redistribution, modifications and pull requests are welcomed under the terms
 of GPLv3 license.

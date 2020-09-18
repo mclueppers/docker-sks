@@ -17,7 +17,7 @@ apk --no-progress add curl camlp4 db-dev gcc libc-dev make zlib-dev ocaml
 curl -L -s https://github.com/just-containers/s6-overlay/releases/download/v1.21.7.0/s6-overlay-amd64.tar.gz | tar xzf - -C /
 
 # build sks
-curl -L -s https://bitbucket.org/skskeyserver/sks-keyserver/downloads/sks-1.1.6.tgz | tar xzf - -C /tmp/
+curl -L -s https://github.com/SKS-Keyserver/sks-keyserver/releases/download/1.1.6/sks-1.1.6.tgz | tar xzf - -C /tmp/
 
 cd /tmp/sks-*/
 cp Makefile.local.unused Makefile.local
